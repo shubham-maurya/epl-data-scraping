@@ -34,10 +34,13 @@ head(df)
     ## 5           0       4       1        1
     ## 6           0       2       1        1
 
-This is an R Markdown format used for publishing markdown documents to GitHub. When you click the **Knit** button all R code chunks are run and a markdown file (.md) suitable for publishing to GitHub is generated.
+What I'm trying to build
+========================
 
-Including Code
---------------
+-   A regression model that explains a player's transfer value
+-   Estimating the size of the EPL's impact on popularity of players who've been signed from abroad
+-   Do a comparative analysis of the Top 6 vs other teams
+-   Estimate the (inverse) English \#\# Including Code
 
 You can include R code in the document as follows:
 
