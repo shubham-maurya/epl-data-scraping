@@ -15,8 +15,8 @@ This dataset contains information for 461 players of the English Premier League,
 
 The head of the data looks like this - 
 
-```{r}
-head(df)
+```{r results='asis'}
+knitr::kable(head(df))
 ```
 
 
@@ -33,19 +33,20 @@ But first, some nice and simple exploratory analysis.
 
 One would expect the distribution to be long-tailed on the right : Lots of cheap players, with much fewer quality players. 
 
-```{r,warning=FALSE,echo=FALSE}
+```{r pop_all,warning=FALSE,echo=FALSE,cache=TRUE}
+knitr::opts_chunk$set(echo = TRUE)
 ggplot(df,aes(market_value))+geom_histogram(binwidth = 5)+xlab("Market Value (in Million Euros)")
 ```
 Clearly, the majority of players are valued under 10 million euros.
 
-## Top 6 (Yes, Tottenham too.)
-```{r,warning=FALSE,echo=FALSE}
+# Top 6 (Yes, Tottenham too.)
+```{r pop_top,warning=FALSE,echo=FALSE}
 df %>% filter(big_club == 1) %>% 
 ggplot(aes(market_value))+geom_histogram(binwidth = 5)+xlab("Market Value (in Million Euros)")
 ```
 
-## Outside Top 6
-```{r,warning=FALSE,echo=FALSE}
+# Outside Top 6
+```{r pop_nottop,warning=FALSE,echo=FALSE}
 df %>% filter(big_club == 0) %>% 
 ggplot(aes(market_value))+geom_histogram(binwidth = 5)+xlab("Market Value (in Million Euros)")
 ```
@@ -61,18 +62,18 @@ Now regarding the daterange for the searches - this was a bit of a headache. THe
 
 Now let's lok at the histograms of popularity - 
 
-```{r,warning=FALSE,echo=FALSE}
+```{r wiki_all,warning=FALSE,echo=FALSE}
 ggplot(df,aes(page_views))+geom_histogram()+xlab("Average Daily Wiki Searches")
 ```
 
-## Top 6 
-```{r,warning=FALSE,echo=FALSE}
+# Top 6 
+```{r wiki_top,warning=FALSE,echo=FALSE }
 df %>% filter(big_club == 1) %>%filter(page_views < 6000 ) %>%
 ggplot(aes(page_views))+geom_histogram()+xlab("Average Daily Wiki Searches")
 ```
 
-## Outside Top 6
-```{r,warning=FALSE,echo=FALSE}
+# Outside Top 6
+```{r wiki_nottop,warning=FALSE,echo=FALSE}
 df %>% filter(big_club == 0) %>% filter(page_views < 6000 ) %>%
 ggplot(aes(page_views))+geom_histogram()+xlab("Average Daily Wiki Searches")
 ```
